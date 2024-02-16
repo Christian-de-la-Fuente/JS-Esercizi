@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function getRecursive(nr){
+            console.log(nr);
+            if(nr>0)
+                getRecursive(nr-1);
+            console.log("*"+nr);
+        }
+        // Esercizio 1
+        function ricorsivo (n) {
+            console.log(n);
+            if(n<10){
+                ricorsivo(n+1);
+            }
+        }
+
+        // Esercizio 2
+        let prima = () => console.log(1);
+        let seconda = () => console.log(2);
+        let terza = () => {
+            console.log(3);
+            prima();
+            seconda();
+        }
+        let quarta = () => {
+            console.log(4);
+            setTimeout(prima(), 1000);
+            terza();
+        }
+
+        // Esercizio 3
+        // 1
+        let val = 1000;
+        // 2
+        (() => {
+            let val = 10;
+            console.log(val);
+        })();
+        console.log(val);
+        // 3
+        let risult = (() => {let val = 100; return val})();
+        // 4
+        (function (name) {console.log(`Il mio nome è ${name}`)})("Christian");
+
+        // Esercizio 4
+        // 1
+        let p = {
+            nome: "CJ",
+            indirizzo: "Groove Street"
+        }
+        let myCar = {
+            modello: "Homer",
+            casaProdutrice: "Dinoco",
+            proprietario: p
+        }
+        console.log(myCar.proprietario);
+        // 2
+        myCar["colore"] = "Azzurro";
+        console.log(myCar.colore);
+        // 3
+        console.log("Modello: " + myCar.modello + ", Casa Produtrice: " + myCar.casaProdutrice);
+
+        // Creare un oggetto con una funzione
+        function LibroConFunzione (titolo, autore, editore, prezzo) {
+            this.titolo = titolo;
+            this.autore = autore;
+            this.editore = editore;
+            this.prezzo = prezzo;
+        }
+        let libro2 = new LibroConFunzione("The Silmarilion", "J.R.R. Tolkien", "Minotauro", 15.00);
+        console.log(libro2);
+
+        // Creare un oggetto con una funzione: oggetto = istanza della classe
+        class Libro {
+            constructor (titolo, autore, editore, prezzo) {
+                this.titolo = titolo;
+                this.autore = autore;
+                this.editore = editore;
+                this.prezzo = prezzo;
+            }
+            prendiTitolo () {
+                console.log("il mio titolo è: " + this.titolo);
+            }
+        }
+        let libro3 = new Libro("Michel Strogoff", "Jules Verne", "", 15.00);
+        console.log(libro3.prendiTitolo());
+    </script>
+</body>
+</html>

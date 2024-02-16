@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /* class Punto {
+            constructor(x, y){
+                this.x = x;
+                this.y = y;
+            }
+            // l'idea giusta: restituisce un nuovo punto
+            somma(p){
+                nuovaX = this.x + p.x;
+                nuovaY = this.y + p.y;
+                return new Punto(nuovaX, nuovaY);
+            }
+            // cambio le coordinate di uno dei due punti
+            somma2(p){
+                p.x = this.x + p.x;
+                p.y = this.y + p.y;
+            }
+        }
+        let p1 = new Punto(3, 7);
+        let p2 = new Punto(8, 2);
+        let p3 = p1.somma(p2);
+        console.log(p1, p2, p3);
+        p1.somma2(p2);
+        console.log(p1, p2); */
+
+        /* class Libro {
+            constructor(titolo, autore, editore, prezzo){
+                this.titolo = titolo;
+                this.autore = autore;
+                this.editore = editore;
+                this.prezzo = prezzo;
+            }
+            prezzoMinore(l){
+                if(this.prezzo < l.prezzo){
+                    return new Libro(this.titolo, this.autore, this.editore, this.prezzo);
+                } else {
+                    return new Libro(l.titolo, l.autore, l.editore, l.prezzo);
+                }
+            }
+        }
+
+        let l1 = new Libro('Il Corsaro Nero', 'Emilio Salgari', 'Antonio Vallardi', 15.00);
+        let l2 = new Libro('Le Aventure di Huckleberry Finn', 'Mark Twain', 'Feltrinelli', 10.00);
+        let l3 = l1.prezzoMinore(l2);
+        console.log(l1,l2);
+        console.log(l3); */
+
+        /* class Punto {
+            constructor(x = 0, y = 0){
+                this.x = x;
+                this.y = y;
+            }
+        }
+
+        let p1 = new Punto(3, 7);
+        let p2 = new Punto(8);
+        let p3 = new Punto();
+        console.log(p1, p2, p3); */
+
+        /* class Animale {
+            constructor(specie, verso, preferenzaAlimentare){
+                this.specie = specie;
+                this.verso = verso;
+                this.preferenzaAlimentare = preferenzaAlimentare;
+            }
+            faiVerso(){
+                return this.verso;
+            }
+        }
+
+        let a1 = new Animale('Elefante', 'Barrita', 'erbe');
+        let a2 = new Animale('Orso', 'Ruggito', 'carne e miele');
+
+        console.log(a1,a2);
+        console.log(a1.faiVerso());
+        console.log(a2.faiVerso());
+
+        Animale.prototype.mangia = function () {
+            return 'Mangio ' + this.preferenzaAlimentare;
+        }
+
+        console.log(a1.mangia());
+        console.log(a2.mangia()); */
+
+        /* let s = "xx"
+        String.prototype.saluta = function () {
+            console.log("*" + this);
+        }
+        s.saluta(); */
+
+        let s = "Wammu (Kars) Esidisi";
+        String.prototype.parentesi = function () {
+            console.log(s.slice(s.indexOf("(")+1, s.lastIndexOf(")")));
+        }
+    </script>
+</body>
+</html>

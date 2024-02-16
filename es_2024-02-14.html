@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        // Es 1
+        /* let indice = 50;
+        while(indice < 90){
+            indice +=  10;
+            console.log(i);
+        } */
+        // Es 2
+        /* let array = [];
+        for(let i = 0; i < 5; i++){
+            let input = Number(prompt("Inserisci un prezzo"));
+            let iva = input * 22 / 100;
+            array.push(input + iva);
+        }
+        for(element of array){
+            console.log(element);
+        } */
+        // Es 3
+        let arr = [1, 0, 50, 0, 24, 78, 0];
+        let ris = 0;
+        for(let i = 0; i < arr.length; i++){
+            if(arr[i] == 0){
+                ris++
+            }
+        }
+        console.log(ris);
+    </script>
+</body>
+</html>

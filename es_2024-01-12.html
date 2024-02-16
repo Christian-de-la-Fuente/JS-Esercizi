@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // Funzioni anonime
+        /* let saluta = function(){
+            console.log("ciao");
+        }
+
+        function salutaDueVolte(funzionePassata){
+            funzionePassata();
+            console.log("Arrivederci");
+        } */
+
+        // Esercizio
+        /* let nomi = ["Abraham", "Johnny", "Vlad", "Antoine", "Max"]; 
+        console.log(nomi[Math.floor(Math.random()*5)]); */
+
+        // Esercizio
+        /* Math.random = function(){
+            return 0.2;
+        }
+
+        console.log(nomi[Math.floor(Math.random()*5)]); */
+
+        // Esercizio
+        /* let i = 0;
+        let indici = [0.4, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.8];
+
+        Math.random = function(){
+            
+            if(i < indici.length){
+                let val=indici[i];
+                i++;
+                return val; 
+            } else{
+                i = 0;
+                let val=indici[i];
+                i++;
+                return val;
+            }
+            return val;
+        }
+
+        console.log(nomi[Math.floor(Math.random()*5)]); */
+
+        // Arrow functions
+        /* let somma = function(x, y){
+            return x+y;
+        }
+
+        let somma2 = (x, y) => x+y;
+        let risultato = somma(7,3);
+        let risultato2 = somma2(7,3);
+        console.log("risultato: ", risultato, risultato2); */
+
+        /* let arrayRisultato = [];
+        for(let i = 0; i < 10; i++){
+            let risultato = i + 2*i;
+            arrayRisultato.push(risultato);
+        }
+        console.log(arrayRisultato); */
+
+        function calcolo(x, y, operatore) {
+            if(operatore == undefined){
+                operatore = "+";
+            }
+            return eval(x + operatore + y);
+        }
+
+        let arrayRisultato = [];
+        for(let i = 0; i < 10; i++){
+            let val_1 = i*5;
+            let val_2 = i*i;
+            let risultato = calcolo(val_1,val_2);
+            arrayRisultato.push(risultato);
+        }
+
+        console.log(arrayRisultato);
+
+        
+
+    </script>
+</body>
+</html>

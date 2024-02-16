@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Esercizio
+        class Dipendente {
+            constructor(nome, cognome, anniLavoro){
+                this.nome = nome;
+                this.cognome = cognome;
+                this.anniLavoro = anniLavoro;
+            }
+        }
+
+        let d1 = new Dipendente('Jeff', 'Alberson', 20);
+        let d2 = new Dipendente('John', 'Carmack', 30);
+        let d3 = new Dipendente('Apu', 'Nahasapemapetilon', 15);
+
+        let dipendenti = [d1, d2, d3];
+
+        Dipendente.prototype.dettagli = function () {
+            return `Si chiama ${this.nome} ${this.cognome} e lavora da ${this.anniLavoro} anni`;
+        }
+
+        for(let i = 0; i < dipendenti.length; i++){
+            console.log(dipendenti[i].dettagli());
+        }
+
+        function cercaNome (d) {
+            let input = prompt('Inserire nome:');
+            for(let i = 0; i < d.length; i++){
+                if(d[i].nome == input){
+                    return d[i].dettagli();
+                }
+            }
+        }
+
+        // Esercizio 2
+        let gemini = {
+            dataInizio : 22,
+            meseInizio : 4,
+            dataFine : 21,
+            meseFine : 5,
+            nome : "Gemini"
+        }
+
+        let virgo = {
+            dataInizio : 24,
+            meseInizio : 7,
+            dataFine : 23,
+            meseFine : 8,
+            nome : "Virgo"
+        }
+
+        let libra = {
+            dataInizio : 24,
+            meseInizio : 8,
+            dataFine : 23,
+            meseFine : 9,
+            nome : "Libra"
+        }
+
+        let segni = [gemini, virgo, libra];
+    </script>
+</body>
+</html>

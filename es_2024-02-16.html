@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // For e While
+        // Es
+        /* let array = ["xxxx",3,2,"hhh",0,1,"aa"];
+        let arr = [];
+        for(element of array){
+            if(typeof(element) == "string"){
+                arr.push(element)
+            }
+        }
+        console.log(arr.length);
+        console.log(arr); */
+        // Es
+        /* let array = [1,2,3,4,5];
+        let ris = 0;
+        for(element of array){
+            ris = ris + element;
+        }
+        console.log(ris); */
+        // Es
+        /* let array = [1,2,3,4,5];
+        let ris = 0;
+        for(element of array){
+            if(element >= 3){
+                ris = ris + element;
+            }
+        }
+        console.log(ris); */
+        // Es
+        /* let array = ["xxxx",3,2,"hhh",0,1,"aa"];
+        let ris = 0;
+        for(element of array){
+            if(typeof(element) == 'number'){
+                ris = ris + element;
+            }
+        }
+        console.log(ris); */
+        // Funzioni
+        // Es 1
+        /* let arr = [1,2,3,4,5];
+        function sommaArray (array) {
+            let ris = 0;
+            for(element of array){
+                ris = ris + element;
+            }
+            return ris;
+        }
+        console.log(sommaArray(arr)); */
+        // Es 2
+        /* let arr = [1,2,3,4,5];
+        function operazioniArray (x, y) {
+            if(y == 1){
+                let ris = 0;
+                for(element of x){
+                    ris = ris + element;
+                }
+                return ris;
+            }else if(y == 2){
+                let ris = 0;
+                for(element of x){
+                    ris = ris - element;
+                }
+                return ris;
+            }else{
+                return x;
+            }
+        }
+        console.log(operazioniArray(arr));
+        console.log(operazioniArray(arr, 1));
+        console.log(operazioniArray(arr, 2)); */
+        // Es 3
+        /* let arr = [1,2,3,4,5];
+        function operazioniArray (x, y) {
+            if(y == 1){
+                let ris = 0;
+                for(element of x){
+                    ris = ris + element;
+                }
+                console.log(ris);
+            }else if(y == 2){
+                let ris = 0;
+                for(element of x){
+                    ris = ris - element;
+                }
+                console.log(ris);
+            }else{
+                console.log(x);
+            }
+        }
+        operazioniArray(arr);
+        operazioniArray(arr, 1);
+        operazioniArray(arr, 2); */
+        // Es 4
+        /* let arr1 = [1,2,3,4,5];
+        let arr2 = [1,2,3,4,5];
+        function sommaDueArray (array1, array2) {
+            let ris = [];
+            for(let i = 0; i < arr1.length; i++){
+                ris.push(arr1[i] + arr2[i]);
+            }
+            return ris;
+        }
+        console.log(sommaDueArray(arr1, arr2));
+        
+        let sommaDueArray2 = function (array1, array2) {
+            let ris = [];
+            for(let i = 0; i < arr1.length; i++){
+                ris.push(arr1[i] + arr2[i]);
+            }
+            return ris;
+        }
+        console.log(sommaDueArray2(arr1, arr2));
+        
+        let sommaDueArray3 = (arr1, arr2) => {
+            let ris = [];
+            for(let i = 0; i < arr1.length; i++){
+                ris.push(arr1[i] + arr2[i]);
+            }
+            return ris;
+        }
+        console.log(sommaDueArray3(arr1, arr2)); */
+        // Es 5
+        /* function dueNumeri (n1, n2) {
+            let ris = n1;
+            while(ris < n2 - 1){
+                ris++;
+                console.log(ris);
+            }
+        }
+        dueNumeri(1, 10);
+
+        let dueNumeri2 = function (n1, n2) {
+            let ris = n1;
+            while(ris < n2 - 1){
+                ris++;
+                console.log(ris);
+            }
+        }
+        dueNumeri2(1, 10);
+
+        let dueNumeri3 = (n1, n2) => {
+            let ris = n1;
+            while(ris < n2 - 1){
+                ris++;
+                console.log(ris);
+            }
+        }
+        dueNumeri3(1, 10); */
+        // Oggetti
+        // Es 1
+        /* let array = [];
+        class Lavoratore {
+            constructor(nome, cognome, posto, salario, anniLavorativi){
+                this.nome = nome;
+                this.cognome = cognome;
+                this.posto = posto;
+                this.salario = salario;
+                this.anniLavorativi = anniLavorativi;
+            }
+        }
+        let lavoratore1 = new Lavoratore ("Homer", "Simpson", "Tecnico Supervisore", 1200, 10);
+        let lavoratore2 = new Lavoratore ("Lenny", "Leonard", "Ispettore Tecnico", 1500, 9);
+        let lavoratore3 = new Lavoratore ("Carl", "Carlson", "Supervisore Tecnico", 1600, 9);
+        array.push(lavoratore1);
+        array.push(lavoratore2);
+        array.push(lavoratore3);
+        console.log(array[1].nome);
+        Lavoratore.prototype.salarioMaggiorato = function () {
+            return this.salario+(this.salario * this.anniLavorativi/100);
+        }
+        console.log(array[1].salarioMaggiorato()); */
+        // Es 2
+        /* let minimo = 10000;
+        let lavoratoreMinimo = array[0];
+        for(let i = 0; i < array.length; i++){
+            if(array[i].salario < minimo){
+                minimo =array[i].salario;
+                lavoratoreMinimo = array[i];
+            }
+        }
+        console.log("Il lavoratore col salario più basso è: " + lavoratoreMinimo.nome); */
+        // Es 3
+        /* let lettera = {
+            mittente: {
+                nome: "Tony",
+                cognome: "Kakko",
+                indirizzo: "Power metal street"
+
+            },
+            destinatario: {
+                nome: "Dana",
+                cognome: "O'Hara",
+                indirizzo: "A place faraway"
+
+            },
+            dataSpedizione: 04/09/1999,
+            pressaConsegna: true
+        }
+        console.log(lettera.destinatario, lettera.pressaConsegna); */
+        // Es 4
+        /* class Persona {
+            constructor(nome, cognome, indirizzo){
+                this.nome = nome;
+                this.cognome = cognome;
+                this.indirizzo = indirizzo;
+            }
+        }
+        let lettera = {
+            mittente: new Persona("Tony", "Kakko", "Power metal street"),
+            destinatario: new Persona("Dana", "O'Hara", "A place faraway"),
+            dataSpedizione: 04/09/1999,
+            pressaConsegna: true
+        }
+        console.log(lettera.destinatario, lettera.pressaConsegna); */
+        // Stringhe
+        // Es 1
+        /* let stringha = "ho91v2";
+        function cambiaStringha (s) {
+            let ris = s.replace(s.slice(2,3), "a");
+            return ris;
+        }
+        console.log(cambiaStringha(stringha)); */
+        // Es 2
+        /* let stringha = "ho9 1v2 dfg 111 dfg";
+        let parole = stringha.split(" ");
+        console.log("Quante parole ci sono: " + parole.length);
+        let numeri = 0;
+        for(element of parole){
+            if(Number(element)){
+                numeri++
+            }
+        }
+        console.log("Quante di quelle parole sono dei numeri: " + numeri);
+        let numeri2 = 0;
+        for(element of parole){
+            for(e of element){
+                if(Number(e)){
+                    numeri2++;
+                }
+            }
+        }
+        console.log("Quanti numeri ci sono in tutte le parole: " + numeri2); */
+        // Json
+        // Es 1
+        /* let libro = {
+            titolo: "I misteri della giungla nera",
+            autore: "Emilio Salgari",
+            prezzo: 15.00
+        }
+        libroJson = JSON.stringify(libro);
+        console.log(libro);
+        console.log(libroJson); */
+        // Es2
+        /* let libro2 = '{"titolo":"Ivanhoe", "autore":"Walter Scott", "prezzo":15}';
+        let libroOggetto = JSON.parse(libro2);
+        console.log(libroOggetto); */
+        // Date
+        // Es 1
+        let date1 = new Date("01/16/2024");
+        let date2 = new Date("01/26/2024");
+        function calcolaDueDate (d1, d2) {
+            let differenzaTempo = d2.getTime() - d1.getTime();
+            let differenzaGiorni = Math.round(differenzaTempo / (1000 * 3600 * 24));
+            console.log(d1);
+            console.log(d2);
+            console.log("Differenza di giorni: " + differenzaGiorni);
+        }
+        calcolaDueDate(date1, date2);
+        // Es 2
+        function calcolaMese (data) {
+            
+        }
+    </script>
+</body>
+</html>

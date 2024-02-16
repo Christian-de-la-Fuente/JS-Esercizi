@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        let body = document.body;
+
+        function stampa(x){
+            if(x){
+                body.append(x);
+                const br = document.createElement('br');
+                body.append(br);
+            } else {
+                const hr = document.createElement('hr');
+                body.append(hr);
+            }
+        }
+
+        let array = ["Bravo", "Inteligente", "Coraggioso"];
+
+        function descrizione(x) {
+            x = array[Math.floor(Math.random()*array.length)];
+            let input = prompt("Inserire nome");
+            console.log(input, x);
+        }
+
+        function saluto(nome) {
+            if(nome){
+                stampa("Ciao " + input);
+            } else{
+                let input = prompt("");
+                stampa();
+            }
+        }
+
+        function addTwoNumbers(x = 2, y = 3) {
+            console.log(x + y);
+        }
+
+        function somma(x, y) {
+            return x + y;
+        }
+
+        //console.log(somma(3,7));
+
+        function calcolo(x, y, operatore) {
+            if(operatore == undefined){
+                operatore = "+";
+            }
+            return eval(x + operatore + y);
+        }
+    </script>
+</body>
+</html>

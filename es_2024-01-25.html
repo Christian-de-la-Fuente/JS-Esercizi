@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function libro (titolo, autore,editore) {
+            this.titolo = titolo;
+            this.autore = autore;
+            this.editore = editore;
+            this.presentazione = (titolo) => {console.log(`Il titolo è ${titolo}`)} 
+        }
+
+        function sommavalori () {
+            let risultato = 0;
+            for(let i = 0; i < 5; i++) {
+                let val = Number(prompt('Inserisci numero: '));
+                risultato = risultato + val;
+            }
+            console.log(risultato);
+        }
+
+        // Esercizio 1
+        // 1
+        class Persona{
+            constructor (nome,cognome) {
+                this.nome = nome;
+                this.cognome = cognome;
+            }
+            fullname () {
+                console.log(`Il mio nome è ${this.nome} ${this.cognome}`)
+            }
+        }
+        // 2
+        let persona1 = new Persona ('Erik', 'Belaj');
+        let persona2 = new Persona ('Davide', 'Bruno');
+        // 3
+        persona1.fullname();
+        persona2.fullname();
+
+        // forEach è un metodo che si applica agli oggetti array e prende come argomento una funzione
+        //["www", "rrr", "ttt", "hhhh"].forEach(x => console.log(x));
+        //["www", "rrr", "ttt", "hhhh"].forEach((x, y) => console.log(x, y));
+        ["www", "rrr", "ttt", "hhhh"].forEach((x, y) => {
+            if (y == 2);
+            console.log()
+        });
+
+        // Esercizio 2
+        let gruppi = "Metallica Megadeth Stratovarius Nightwish Ulver Mushroomhead";
+        /* function trasformaParole (x) {
+            let stringa = x.toLowerCase();
+            let tempArr = [];
+            let bands = x.split(" ");
+            for(let i = 0; i < bands.length; i++){
+                let val = bands[i].replace(bands[i].charAt(0), bands[i].charAt(0).toUpperCase());
+                tempArr.push(val);
+            }
+            console.log(tempArr.join(" "));
+        } */
+
+        function trasformaParole (x) {
+            let bands = gruppi.split(" ");
+            let tempArr = [];
+            bands.forEach(x => tempArr.push(x.charAt(0).toUpperCase() + x.slice(1)));
+            return tempArr.join(" ");
+        }
+
+        // Esercizio 3
+        /* let legione = "velites hastati principes triarii equites";
+        function trasformaParole2 (x) {
+            let arr = [];
+            let unita = x.split(" ");
+            for(let i = 0; i < unita.length; i++){
+                let val = unita[i].replaceAll("a", "4");
+                let val2 = val.replaceAll("e", "3");
+                let val3 = val2.replaceAll("i", "1");
+                let val4 = val3.replaceAll("o", "0");
+                let val5 = val4.replaceAll("u", "5");
+                arr.push(val5);
+            }
+            console.log(arr.join(" "));
+        } */
+        
+        let legione = "velites hastati principes triarii equites";
+        let vocali = ['a', 'e', 'i', 'o', 'u'];
+        function trasformaVocali () {
+            vocali.forEach((x, y) => legione = legione.replaceAll(x, y));
+        }
+    </script>
+</body>
+</html>
