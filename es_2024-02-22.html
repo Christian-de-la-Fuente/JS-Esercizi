@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div{
+            border: 2px solid black;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="div">Mellon</div>
+    <script>
+        // div.style.backgroundColor = "Red";
+
+        // Es 1
+        // getElementById
+        // getElementSByClassName
+        miaCollection = [{id: 'Beren', class: 'miaclasse'},
+                {id: 'Turin', class: 'miaclasse'},
+                {id: 'Tuor', class: 'miaclasse2'}];
+        /* function getElementById (collection, id) {
+            let ret = {};
+            for(let i = 0; i < collection.length; i++){
+                if(id == collection[i].id){
+                    ret = collection[i];
+                    break;
+                }
+            }
+            return ret;
+        } */
+        function getElementById (collection, id) {
+            let ret = collection.find(name => name.id == id);
+            return (collection == undefined ? {} : ret);
+        }
+        console.log(getElementById (miaCollection, "Beren"));
+        function getElementsByClassName (collection, className) {
+            let arr = [];
+            for(let i = 0; i < collection.length; i++){
+                if(className == collection[i].class){
+                    arr.push(collection[i]);
+                }
+            }
+            return arr;
+        }
+        console.log(getElementsByClassName (miaCollection, "miaclasse"));
+    </script>
+</body>
+</html>
