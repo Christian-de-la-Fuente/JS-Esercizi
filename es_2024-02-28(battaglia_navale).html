@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .griglia{
+            border-color: darkblue;
+            border-style: dashed;
+            display: table;
+        }
+        .row{
+            border-color: blue;
+            border-style: solid;
+            display: table-row;
+        }
+        .col{
+            border-color: black;
+            border-style: solid;
+            height: 10px;
+            width: 10px;
+            display: table-cell;
+        }
+        .empty{
+            background-color: white;
+        }
+        .colpito{
+            background-color: red;
+            border-color: pink;
+            border-style: dashed;
+        }
+        .acqua{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <span>Giocatore 1</span>
+    <div id='p1' class="griglia">
+        <div id='p1r1' class="row">
+            <div id="p1r1c1" class="col"></div>
+            <div id="p1r1c2" class="col"></div>
+            <div id="p1r1c3" class="col"></div>
+        </div>
+        <div id='p1r2' class="row">
+            <div id="p1r2c1" class="col"></div>
+            <div id="p1r2c2" class="col"></div>
+            <div id="p1r2c3" class="col"></div>
+        </div>
+        <div id='p1r3' class="row">
+            <div id="p1r3c1" class="col"></div>
+            <div id="p1r3c2" class="col"></div>
+            <div id="p1r3c3" class="col"></div>
+        </div>
+    </div>
+
+    <span>Giocatore 2</span>
+    <table id="p2" class="griglia">
+        <tr id="p2r1" class="row">
+            <td id="p2r1c1" class="col"></td>
+            <td id="p2r1c2" class="col"></td>
+            <td id="p2r1c3" class="col"></td>
+        </tr>
+        <tr id="p2r2" class="row">
+            <td id="p2r2c1" class="col"></td>
+            <td id="p2r2c2" class="col"></td>
+            <td id="p2r2c3" class="col"></td>
+        </tr>
+        <tr id="p2r3" class="row">
+            <td id="p2r3c1" class="col"></td>
+            <td id="p2r3c2" class="col"></td>
+            <td id="p2r3c3" class="col"></td>
+        </tr>
+        
+    </table>
+
+    <script>
+        //battaglia navale
+        
+        //fe html
+        
+        //il comportamento in js
+        
+        //ingredienti
+        
+        //FE
+        // 2 griglie campo da gioco formati da x righe e x colonne
+        // implementati con div o table
+        // dove visualizzare i colpi effettuati
+        // visulizzo:
+        //   bianco -> nessun colpo
+        //   grigio -> acqua
+        //   rosso -> colpito
+        
+        // due campi testo che accettano solo interi < x dove il giocatore inserisce le coordinate di giocata
+        // un bottone che chiama la funzione di colpisci
+        
+        //codice
+        // gli array di posizionamento li creiamo lato codice senza interazione
+        // un array trimensionale, due elementi che contengono un array bisimensionale di x righe e x colonne per il posizionamento delle navi
+        // navi posizionate, array array int (0-> nessuna nave, 1-> nave posizionata)
+        let campi = [
+            [ 
+               [0,1,0], //riga
+               [1,0,0],
+               [1,0,0]
+            ], //player1
+            [ 
+                [1,0,0], //riga
+                [1,0,0],
+                [1,0,0]
+             ], //player2
+        ]
+        let naviColpite = [0,0]
+        const numNaviDaColpire = 3;
+        
+        //funzione colpisci
+        // ha in input il giocatore, la riga e la colonna da colpire
+        // colora il campo campo di gioco dell'avversario discriminando il colore
+        // se colpisce incrementa numero navi colpite
+        // se colpisce aggiorna il campo di gara mettendo a 0 la cella della nave perchè non c'è più
+        // se numero navi colpite == massimo segnala vittoria
+        //in output ho una stringa: "continua" oppure "vittoria"
+
+        function colpisci(player,row,col){
+            let ret="continua";
+            //scrivi la funzione, considerando l'esempio
+            //esempio
+            //const cell=document.getElementById('p'+player+'r'+row+'c'+col)
+            //cell.classList.add('colpito')
+            let classe = "none";
+            //indice sul campo dell'avversario FD TODO rivedere con modulo
+            //se player == 1 -> 1
+            //se player == 2 -> 0
+            //let indiceCampoPlayerAvversario = (player == 1) ? 1 : 0;
+            let indiceCampoPlayerAvversario = player % 2;
+            switch(campi[indiceCampoPlayerAvversario][row-1][col-1]){
+                case 0: 
+                    //acqua
+                    classe = 'acqua';                    
+                break;
+                case 1: 
+                    //colpito
+                    classe = 'colpito';
+                    naviColpite[player-1] ++; 
+                    if (naviColpite[player-1] == numNaviDaColpire)
+                        ret="vittoria";                    
+                break;
+                case -1:
+                default: 
+                    //cella già colpita, non faccio nulla
+                break;                    
+            }
+            //oppure
+            // if (campi[indiceCampoPlayerAvversario][row-1][col-1] == -1){
+            //     //cella già colpita, non faccio nulla
+            // } 
+            // else if (campi[indiceCampoPlayerAvversario][row-1][col-1] == 1) {
+            //     //colpito
+            //     classe = 'colpito';
+            //     naviColpite[player-1] ++; 
+            //     if (naviColpite[player-1] == numNaviDaColpire)
+            //         ret="vittoria";
+            // }
+            // else{
+            //     //acqua
+            //     classe = 'acqua';
+            // }
+
+            // in ogni caso setto a -1 il colpo
+            campi[indiceCampoPlayerAvversario][row-1][col-1] = -1;
+            //cambio il colore della cella solo se la cella non è stata ancora utilizzata
+            //   
+            if (classe != "none"){
+                //const cell=document.getElementById('p'+player+'r'+row+'c'+col)
+                //con backtick
+                const cell=document.getElementById(`p${player}r${row}c${col}`);
+                cell.classList.add(classe) 
+            }             
+
+            return ret;                
+        }
+        // fa troppe poche cose, non mi serve
+        //dati in input i tre valori player, riga, colonna, verifica nel campo di gioco
+        //dell'avversario se è presente la nave oppure no
+        // es: input 1,1,1
+        // vado in campi[0,0,0] -> se 1 è colpito, se 0 acqua
+        // forzatura, il campo di gioco è una variabile globale e quindi non la passo in input
+        //in output restituisce "colpito" oppure "acqua"
+        function verificaColpo(player, row, col){
+            let ret="";
+            if (campi[player-1][row-1][col-1] == 1)
+                ret = "colpito";
+            else
+                ret="acqua";
+            return ret;
+            //oppure 
+            //return (campi[player-1][row-1][col-1] == 1) ? "colpito" : "acqua" ;
+        }
+
+        // funzione che inizializza il gioco
+        function init () {
+            // inizializzo la classe delle cella a empty
+            const els = document.getElementsByClassName("col");
+            [].forEach.call(els, function (el) {el.classList.add("empty")});
+        }
+        window.addEventListener("load", (event) => {
+            init();
+        })
+        </script>
+</body>
+</html>
