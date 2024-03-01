@@ -19,12 +19,12 @@
         .col{
             border-color: black;
             border-style: solid;
-            height: 10px;
-            width: 10px;
+            height: 60px;
+            width: 60px;
             display: table-cell;
         }
         .empty{
-            background-color: white;
+            background-color: azure;
         }
         .colpito{
             background-color: red;
@@ -37,6 +37,7 @@
     </style>
 </head>
 <body>
+    <p>Tocca al giocatore <span id="currentplayer"></span></p>
     <span>Giocatore 1</span>
     <div id='p1' class="griglia">
         <div id='p1r1' class="row">
@@ -74,141 +75,208 @@
             <td id="p2r3c3" class="col"></td>
         </tr>
         
-    </table>
+    </table><br>
+    <label>Scegli il giocatore</label><br>
+    <input type="text" id="idstartplayer"><br>
+    <input type="button" value="Invia" onClick="scegliePlayer()">
 
     <script>
         //battaglia navale
-        
-        //fe html
-        
-        //il comportamento in js
-        
-        //ingredienti
-        
-        //FE
-        // 2 griglie campo da gioco formati da x righe e x colonne
-        // implementati con div o table
-        // dove visualizzare i colpi effettuati
-        // visulizzo:
-        //   bianco -> nessun colpo
-        //   grigio -> acqua
-        //   rosso -> colpito
-        
-        // due campi testo che accettano solo interi < x dove il giocatore inserisce le coordinate di giocata
-        // un bottone che chiama la funzione di colpisci
-        
-        //codice
-        // gli array di posizionamento li creiamo lato codice senza interazione
-        // un array trimensionale, due elementi che contengono un array bisimensionale di x righe e x colonne per il posizionamento delle navi
-        // navi posizionate, array array int (0-> nessuna nave, 1-> nave posizionata)
-        let campi = [
-            [ 
-               [0,1,0], //riga
-               [1,0,0],
-               [1,0,0]
-            ], //player1
-            [ 
-                [1,0,0], //riga
-                [1,0,0],
-                [1,0,0]
-             ], //player2
-        ]
-        let naviColpite = [0,0]
-        const numNaviDaColpire = 3;
-        
-        //funzione colpisci
-        // ha in input il giocatore, la riga e la colonna da colpire
-        // colora il campo campo di gioco dell'avversario discriminando il colore
-        // se colpisce incrementa numero navi colpite
-        // se colpisce aggiorna il campo di gara mettendo a 0 la cella della nave perchè non c'è più
-        // se numero navi colpite == massimo segnala vittoria
-        //in output ho una stringa: "continua" oppure "vittoria"
+            
+            //fe html
+            
+            //il comportamento in js
+            
+            //ingredienti
+            
+            //FE
+            // 2 griglie campo da gioco formati da x righe e x colonne
+            // implementati con div o table
+            // dove visualizzare i colpi effettuati
+            // visulizzo:
+            //   bianco -> nessun colpo
+            //   grigio -> acqua
+            //   rosso -> colpito
+            
+            // due campi testo che accettano solo interi < x dove il giocatore inserisce le coordinate di giocata
+            // un bottone che chiama la funzione di colpisci
+            
+            //codice
+            // gli array di posizionamento li creiamo lato codice senza interazione
+            // un array trimensionale, due elementi che contengono un array bisimensionale di x righe e x colonne per il posizionamento delle navi
+            // navi posizionate, array array int (0-> nessuna nave, 1-> nave posizionata)
+            let campi = [
+                [ 
+                   [0,1,0], //riga
+                   [1,0,0],
+                   [1,0,0]
+                ], //player1
+                [ 
+                    [1,0,0], //riga
+                    [1,0,0],
+                    [1,0,0]
+                 ], //player2
+            ]
+            let naviColpite = [0,0]
+            const numNaviDaColpire = 3;
+            
+            //funzione colpisci
+            // ha in input il giocatore, la riga e la colonna da colpire
+            // colora il campo campo di gioco dell'avversario discriminando il colore
+            // se colpisce incrementa numero navi colpite
+            // se colpisce aggiorna il campo di gara mettendo a 0 la cella della nave perchè non c'è più
+            // se numero navi colpite == massimo segnala vittoria
+            //in output ho una stringa: "continua" oppure "vittoria"
 
-        function colpisci(player,row,col){
-            let ret="continua";
-            //scrivi la funzione, considerando l'esempio
-            //esempio
-            //const cell=document.getElementById('p'+player+'r'+row+'c'+col)
-            //cell.classList.add('colpito')
-            let classe = "none";
-            //indice sul campo dell'avversario FD TODO rivedere con modulo
-            //se player == 1 -> 1
-            //se player == 2 -> 0
-            //let indiceCampoPlayerAvversario = (player == 1) ? 1 : 0;
-            let indiceCampoPlayerAvversario = player % 2;
-            switch(campi[indiceCampoPlayerAvversario][row-1][col-1]){
-                case 0: 
-                    //acqua
-                    classe = 'acqua';                    
-                break;
-                case 1: 
-                    //colpito
-                    classe = 'colpito';
-                    naviColpite[player-1] ++; 
-                    if (naviColpite[player-1] == numNaviDaColpire)
-                        ret="vittoria";                    
-                break;
-                case -1:
-                default: 
-                    //cella già colpita, non faccio nulla
-                break;                    
-            }
-            //oppure
-            // if (campi[indiceCampoPlayerAvversario][row-1][col-1] == -1){
-            //     //cella già colpita, non faccio nulla
-            // } 
-            // else if (campi[indiceCampoPlayerAvversario][row-1][col-1] == 1) {
-            //     //colpito
-            //     classe = 'colpito';
-            //     naviColpite[player-1] ++; 
-            //     if (naviColpite[player-1] == numNaviDaColpire)
-            //         ret="vittoria";
-            // }
-            // else{
-            //     //acqua
-            //     classe = 'acqua';
-            // }
-
-            // in ogni caso setto a -1 il colpo
-            campi[indiceCampoPlayerAvversario][row-1][col-1] = -1;
-            //cambio il colore della cella solo se la cella non è stata ancora utilizzata
-            //   
-            if (classe != "none"){
+            function colpisci(player,row,col){
+                let ret="continua";
+                //scrivi la funzione, considerando l'esempio
+                //esempio
                 //const cell=document.getElementById('p'+player+'r'+row+'c'+col)
-                //con backtick
-                const cell=document.getElementById(`p${player}r${row}c${col}`);
-                cell.classList.add(classe) 
-            }             
+                //cell.classList.add('colpito')
+                let classe = "none";
+                //indice sul campo dell'avversario FD TODO rivedere con modulo
+                //se player == 1 -> 1
+                //se player == 2 -> 0
+                //let indiceCampoPlayerAvversario = (player == 1) ? 1 : 0;
+                let indiceCampoPlayerAvversario = player % 2;
+                switch(campi[indiceCampoPlayerAvversario][row-1][col-1]){
+                    case 0: 
+                        //acqua
+                        classe = 'acqua';                    
+                    break;
+                    case 1: 
+                        //colpito
+                        classe = 'colpito';
+                        naviColpite[player-1] ++; 
+                        if (naviColpite[player-1] == numNaviDaColpire)
+                            ret="vittoria";                    
+                    break;
+                    case -1:
+                    default: 
+                        //cella già colpita, non faccio nulla
+                    break;                    
+                }
+                //oppure
+                // if (campi[indiceCampoPlayerAvversario][row-1][col-1] == -1){
+                //     //cella già colpita, non faccio nulla
+                // } 
+                // else if (campi[indiceCampoPlayerAvversario][row-1][col-1] == 1) {
+                //     //colpito
+                //     classe = 'colpito';
+                //     naviColpite[player-1] ++; 
+                //     if (naviColpite[player-1] == numNaviDaColpire)
+                //         ret="vittoria";
+                // }
+                // else{
+                //     //acqua
+                //     classe = 'acqua';
+                // }
 
-            return ret;                
-        }
-        // fa troppe poche cose, non mi serve
-        //dati in input i tre valori player, riga, colonna, verifica nel campo di gioco
-        //dell'avversario se è presente la nave oppure no
-        // es: input 1,1,1
-        // vado in campi[0,0,0] -> se 1 è colpito, se 0 acqua
-        // forzatura, il campo di gioco è una variabile globale e quindi non la passo in input
-        //in output restituisce "colpito" oppure "acqua"
-        function verificaColpo(player, row, col){
-            let ret="";
-            if (campi[player-1][row-1][col-1] == 1)
-                ret = "colpito";
-            else
-                ret="acqua";
-            return ret;
-            //oppure 
-            //return (campi[player-1][row-1][col-1] == 1) ? "colpito" : "acqua" ;
-        }
+                // in ogni caso setto a -1 il colpo
+                campi[indiceCampoPlayerAvversario][row-1][col-1] = -1;
+                //cambio il colore della cella solo se la cella non è stata ancora utilizzata
+                //   
+                if (classe != "none"){
+                    //const cell=document.getElementById('p'+player+'r'+row+'c'+col)
+                    //con backtick
+                    const cell=document.getElementById(`p${player}r${row}c${col}`);
+                    cell.classList.add(classe) 
+                }             
+                switchPlayer();
+                return ret;                
+            }
+            // fa troppe poche cose, non mi serve
+            //dati in input i tre valori player, riga, colonna, verifica nel campo di gioco
+            //dell'avversario se è presente la nave oppure no
+            // es: input 1,1,1
+            // vado in campi[0,0,0] -> se 1 è colpito, se 0 acqua
+            // forzatura, il campo di gioco è una variabile globale e quindi non la passo in input
+            //in output restituisce "colpito" oppure "acqua"
+            function verificaColpo(player, row, col){
+                let ret="";
+                if (campi[player-1][row-1][col-1] == 1)
+                    ret = "colpito";
+                else
+                    ret="acqua";
+                return ret;
+                //oppure 
+                //return (campi[player-1][row-1][col-1] == 1) ? "colpito" : "acqua" ;
+            }
+            //funzione che inizializza il gioco
+            function init(){
+                //inizializzo la classe delle celle a empty
+                // e associa l'evento del click
+                const els = document.getElementsByClassName("col");
+                [].forEach.call(els, function (el) {
+                    el.classList.add("empty");
+                    el.addEventListener("click", function (ev) {
+                        clickCella(ev.target.id);
+                    });
+                });
+            }
 
-        // funzione che inizializza il gioco
-        function init () {
-            // inizializzo la classe delle cella a empty
-            const els = document.getElementsByClassName("col");
-            [].forEach.call(els, function (el) {el.classList.add("empty")});
-        }
-        window.addEventListener("load", (event) => {
-            init();
-        })
+            function converteId (id) {
+                let newString = id.replace("p", "-");
+                newString = newString.replace("r", "-");
+                newString = newString.replace("c", "-");
+                newString = newString.split("-");
+                newString.splice(0, 1);
+                return newString;
+            }
+
+            // funzione riceve in input la stringa con idcella (es p1r1c1) e chiama
+            // la colpisci passando in input player, row, col
+            // 
+            function clickCella (idcella) {
+                //(es p1r1c1)
+                //dobbiamo trovare solo gli indici (es 1,1,1)
+                console.log("cliccato", idcella);
+                const parametri = idcella.match(/\d+/g);
+                if(parametri[0] == currentPlayer){
+                    colpisci(parametri[0], parametri[1], parametri[2]);
+                }else {
+                    alert('non tocca a te!');
+                }
+            }
+            // evento associato al window al caricamento della pagina
+            window.addEventListener("load", (event) => {
+                init();
+            });
+            // evento associato a tutte le celle
+
+            // meccanismo di gioco:
+            // inicia il giocatore 1
+            // ad ogni colpo tocca all'altro giocatore
+
+            let currentPlayer;
+            function switchPlayer () {
+                //se toccava a player 1 adesso tocca a player 2 e viceversa
+                // if (currentPlayer == 1)
+                //     currentPlayer = 2;
+                // else
+                //     currentPlayer = 1;
+                //oppure
+                // currentPlayer = (currentPlayer == 1) ? 2 : 1;
+                //oppure
+                currentPlayer = currentPlayer % 2 + 1;
+                document.getElementById("currentplayer").innerText = currentPlayer
+            }
+            // funzione del click del bottone di scelta player
+            // visualizza nell'html a chi tocca (modifica text dello span con id currentplayer)
+            // 
+            function scegliePlayer () {
+                let scelta = document.getElementById("idstartplayer").value;
+                if(Number(scelta) == 1){
+                    currentPlayer = 1;
+                    document.getElementById("currentplayer").innerText = currentPlayer;
+                }else if(Number(scelta) == 2){
+                    currentPlayer = 2;
+                    document.getElementById("currentplayer").innerText = currentPlayer;
+                }else {
+                    alert("Inserisci 1 o 2");
+                }
+            }
         </script>
 </body>
 </html>
