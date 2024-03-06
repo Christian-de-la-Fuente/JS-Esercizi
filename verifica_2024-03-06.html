@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div{
+            border-color: black;
+            border-style: solid;
+            height: 100px;
+            width: 100px;
+        }
+        .premuto{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div1" class="div"></div>
+    <div id="div2" class="div"></div>
+    <div id="div3" class="div"></div>
+    <div id="div4" class="div"></div><br>
+
+    <p>Numero di volte in cui hai premuto il bottone: <span id="voltePremuto"></span></p>
+    <span></span><br>
+    <label>Sceglie il div</label><br>
+    <input type="text" id="idInput"><br>
+    <input type="button" value="Invia" onClick="applica()">
+    
+    <script>
+        let nvolte = 0;
+
+        function applica () {
+            let divPremuto = document.getElementById(`idInput`).value;
+            let cambiaColoreDiv;
+            switch(Number(divPremuto)){
+                case 1:
+                    cambiaColoreDiv = document.getElementById('div1');
+                    cambiaColoreDiv.classList.add('premuto');
+                    document.getElementById('div2').classList.remove('premuto');
+                    document.getElementById('div3').classList.remove('premuto');
+                    document.getElementById('div4').classList.remove('premuto');
+                    nvolte++;
+                    document.getElementById("voltePremuto").innerText = nvolte;
+                    break;
+                case 2:
+                    cambiaColoreDiv = document.getElementById('div2');
+                    cambiaColoreDiv.classList.add('premuto');
+                    document.getElementById('div1').classList.remove('premuto');
+                    document.getElementById('div3').classList.remove('premuto');
+                    document.getElementById('div4').classList.remove('premuto');
+                    nvolte++;
+                    document.getElementById("voltePremuto").innerText = nvolte;
+                    break;
+                case 3:
+                    cambiaColoreDiv = document.getElementById('div3');
+                    cambiaColoreDiv.classList.add('premuto');
+                    document.getElementById('div1').classList.remove('premuto');
+                    document.getElementById('div2').classList.remove('premuto');
+                    document.getElementById('div4').classList.remove('premuto');
+                    nvolte++;
+                    document.getElementById("voltePremuto").innerText = nvolte;
+                    break;
+                case 4:
+                    cambiaColoreDiv = document.getElementById('div4');
+                    cambiaColoreDiv.classList.add('premuto');
+                    document.getElementById('div1').classList.remove('premuto');
+                    document.getElementById('div2').classList.remove('premuto');
+                    document.getElementById('div3').classList.remove('premuto');
+                    nvolte++;
+                    document.getElementById("voltePremuto").innerText = nvolte;
+                    break;
+                default:
+                    alert("Inserisci un numero del 1 al 4!");
+                    nvolte++;
+                    document.getElementById("voltePremuto").innerText = nvolte;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // Domanda joke
+        let jsondata;
+        fetch('https://reqres.in/api/users')
+            .then((response)=>{
+            // Qui Posso esaminare:
+            // - Stato della risposta
+            // - Metadati (ES: headers)
+            console.log(response);
+            return response.text();
+            })
+            .then((data)=>{
+            // In questo blocco ho accesso ai dati
+            jsonData = data;
+            console.log(data);
+            })
+        function jsonFunction (jsonData, id){
+            let object = JSON.parse(jsonData);
+            for(let i = 0; i < object.data.length; i++){
+                if(object.data[i].id == id){
+                    let ris = JSON.stringify(object.data[i]);
+                    return ris
+                }
+            }
+        }
+    </script>
+</body>
+</html>
